@@ -1,40 +1,129 @@
-/*  your css code here. If applicable */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background-color: #a164df;
   height: 100vh;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 .media {
   height: 50vh;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:20px;
+  gap: 20px;
+  margin-bottom: 20px;
 }
+
+.media video {
+  width: 45%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 #buttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
   padding: 20px;
-  height: 50vh;
 }
+
 .btn,
 .stop {
-  width: 100px;
+  width: 120px;
   height: 50px;
-  font-size: 20px;
+  font-size: 18px;
   border: none;
   background-color: #663399;
+  color: white;
   border-radius: 10px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
+
 .btn:hover,
 .stop:hover {
-  box-shadow: 0 0 10px 2px black;
-  scale: 1.1;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
+  background-color: #7b4cbb;
+}
+
+.stop {
+  background-color: #e74c3c;
+}
+
+.stop:hover {
+  background-color: #c0392b;
+}
+
+.active {
+  background-color: #8e44ad;
+  box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.5);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.volume-control input {
+  width: 150px;
+}
+
+@media (max-width: 768px) {
+  .media {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .media video {
+    width: 100%;
+  }
+
+  #buttons {
+    gap: 10px;
+  }
+
+  .btn,
+  .stop {
+    width: 100px;
+    font-size: 16px;
+  }
 }
