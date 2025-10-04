@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-
 <html>
-
-<head>
-	<link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
-
-</body>
-
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- the entire body must be written by student -->
+    <section id="buttons">
+      <button class="btn" type="submit">applause</button>
+      <button class="btn" type="submit">boo</button>
+      <button class="btn" type="submit">gasp</button>
+      <button class="btn" type="submit">tada</button>
+      <button class="btn" type="submit">victory</button>
+      <button class="btn" type="submit">wrong</button>
+      <button class="stop" type="submit">stop</button>
+    </section>
+    <script type="text/javascript" src="./script.js"></script>
+    <script>
+      const button = document.getElementsByClassName("btn");
+      Array.from(button).forEach((btn) =>
+        btn.addEventListener("click", (e) => alert("Button clicked"))
+      );
+    </script>
+  </body>
 </html>

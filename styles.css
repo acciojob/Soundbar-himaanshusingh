@@ -1,1 +1,35 @@
 /*  your css code here. If applicable */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #a164df;
+  display: flex;
+  flex-flow: row wrap;
+  place-content: center;
+  height: 100vh;
+}
+#buttons {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.btn,
+.stop {
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  border: none;
+  background-color: #663399;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn:hover,
+.stop:hover {
+  box-shadow: 0 0 10px 2px black;
+  scale: 1.1;
+}
