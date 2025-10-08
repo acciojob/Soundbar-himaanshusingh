@@ -4,19 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sound Player</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container">
       <h1>Sound Player</h1>
       <section class="media">
-        <audio src="../MEDIA/sample-music.mp3" controls muted>Audio</audio>
-        <video src="../MEDIA/sample-video.mp4" controls muted></video>
+        <audio src="sounds/sample.mp3" controls muted>Audio</audio>
       </section>
-      <div class="volume-control">
-        <label for="volume">Volume:</label>
-        <input type="range" id="volume" min="0" max="1" step="0.1" value="0.7"/>
-      </div>
       <section id="buttons">
         <button class="btn" type="button">applause</button>
         <button class="btn" type="button">boo</button>
@@ -27,6 +22,6 @@
         <button class="stop" type="button">stop</button>
       </section>
     </div>
-    <script src="./sript.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
