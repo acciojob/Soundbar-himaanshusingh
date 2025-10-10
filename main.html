@@ -4,22 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sound Player</title>
-    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container">
       <h1>Sound Player</h1>
       <section class="media">
-        <audio src="sounds/applause.mp3" controls muted></audio>
-        <video src="sounds/applause.mp4" controls muted></video>
+        <audio id="preview" controls muted>
+          <source src="sounds/applause.mp3" type="audio/mpeg" />
+        </audio>
       </section>
       <section id="buttons">
-        <button class="btn" type="button">applause</button>
-        <button class="btn" type="button">boo</button>
-        <button class="btn" type="button">gasp</button>
-        <button class="btn" type="button">tada</button>
-        <button class="btn" type="button">victory</button>
-        <button class="btn" type="button">wrong</button>
+        <button class="btn" type="button" data-sound="applause">applause</button>
+        <button class="btn" type="button" data-sound="boo">boo</button>
+        <button class="btn" type="button" data-sound="gasp">gasp</button>
+        <button class="btn" type="button" data-sound="tada">tada</button>
+        <button class="btn" type="button" data-sound="victory">victory</button>
+        <button class="btn" type="button" data-sound="wrong">wrong</button>
         <button class="stop" type="button">stop</button>
       </section>
       <div class="controls">
