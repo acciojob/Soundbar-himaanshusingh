@@ -3,28 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Sound Player</title>
   </head>
   <body>
     <div class="container">
       <h1>Sound Player</h1>
-      <section class="media">
-        <audio id="preview" controls muted>
-          <source src="sounds/applause.mp3" type="audio/mpeg" />
-        </audio>
-      </section>
-      <section id="buttons">
-        <button class="btn" type="button" data-sound="applause">applause</button>
-        <button class="btn" type="button" data-sound="boo">boo</button>
-        <button class="btn" type="button" data-sound="gasp">gasp</button>
-        <button class="btn" type="button" data-sound="tada">tada</button>
-        <button class="btn" type="button" data-sound="victory">victory</button>
-        <button class="btn" type="button" data-sound="wrong">wrong</button>
-        <button class="stop" type="button">stop</button>
-      </section>
-      <div class="controls">
-        <input type="range" id="volume" min="0" max="1" step="0.01" value="1" />
+      <p class="subtitle">Click any button to play a sound</p>
+      <div class="visualizer">
+        <div class="bars" id="visualizer-bars"></div>
       </div>
+      <div id="buttons"></div>
+      <button class="btn stop">Stop All Sounds</button>
+      <div class="now-playing" id="now-playing">No sound playing</div>
     </div>
     <script src="./script.js"></script>
   </body>
