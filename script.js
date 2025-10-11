@@ -12,6 +12,7 @@ const sounds = [
 
 // Create buttons for each sound
 const buttonsContainer = document.getElementById("buttons");
+const audioPlayer = document.getElementById("audio-player");
 
 sounds.forEach((sound) => {
   const button = document.createElement("button");
@@ -34,22 +35,19 @@ for (let i = 0; i < 20; i++) {
 let audioContext;
 let analyser;
 let source;
-let currentAudio = null;
 const nowPlayingElement = document.getElementById("now-playing");
 
 // Function to play a sound
 function playSound(sound) {
   // Stop any currently playing sound
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio.currentTime = 0;
-  }
+  audioPlayer.pause();
+  audioPlayer.currentTime = 0;
 
   // Update now playing text
   nowPlayingElement.textContent = `Now playing: ${sound.name}`;
 
-  // Create new audio element
-  currentAudio = new Audio(`sounds/${sound.file}`);
+  // Set the audio source and play
+  audioPlayer.src = `sounds/${sound.file}`;
 
   // Set up audio context for visualization if not already set up
   if (!audioContext) {
@@ -63,7 +61,12 @@ function playSound(sound) {
     audioContext.resume();
   }
 
-  source = audioContext.createMediaElementSource(currentAudio);
+  // Disconnect previous source if exists
+  if (source) {
+    source.disconnect();
+  }
+
+  source = audioContext.createMediaElementSource(audioPlayer);
   source.connect(analyser);
   analyser.connect(audioContext.destination);
 
@@ -71,7 +74,10 @@ function playSound(sound) {
   visualize();
 
   // Play the sound
-  currentAudio.play();
+  audioPlayer.play().catch((e) => {
+    console.error("Error playing audio:", e);
+    nowPlayingElement.textContent = "Error playing sound";
+  });
 }
 
 // Function to visualize audio
@@ -83,7 +89,14 @@ function visualize() {
   const bars = document.querySelectorAll(".bar");
 
   function updateVisualizer() {
-    if (!currentAudio || currentAudio.paused) return;
+    if (!audioPlayer || audioPlayer.paused) {
+      // Reset bars when no audio is playing
+      bars.forEach((bar) => {
+        bar.style.height = "10%";
+        bar.style.background = "linear-gradient(to top, #4776E6, #8E54E9)";
+      });
+      return;
+    }
 
     analyser.getByteFrequencyData(dataArray);
 
@@ -110,16 +123,17 @@ function visualize() {
 
 // Stop button functionality
 document.querySelector(".stop").addEventListener("click", () => {
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio.currentTime = 0;
-    nowPlayingElement.textContent = "No sound playing";
+  audioPlayer.pause();
+  audioPlayer.currentTime = 0;
+  nowPlayingElement.textContent = "No sound playing";
 
-    // Reset visualizer bars
-    const bars = document.querySelectorAll(".bar");
-    bars.forEach((bar) => {
-      bar.style.height = "10%";
-      bar.style.background = "linear-gradient(to top, #4776E6, #8E54E9)";
-    });
-  }
+  // Reset visualizer bars
+  const bars = document.querySelectorAll(".bar");
+  bars.forEach((bar) => {
+    bar.style.height = "10%";
+    bar.style.background = "linear-gradient(to top, #4776E6, #8E54E9)";
+  });
 });
+
+// Initialize visualizer animation
+visualize();

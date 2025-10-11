@@ -105,6 +105,11 @@ h1 {
   height: 30px;
 }
 
+/* Hidden audio element for Cypress testing */
+#audio-player {
+  display: none;
+}
+
 @media (max-width: 600px) {
   .btn {
     min-width: 100px;
